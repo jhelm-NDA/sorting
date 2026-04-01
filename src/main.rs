@@ -6,10 +6,13 @@ mod quick;
 mod heap;
 mod benchmark;
 
-use rand::Rng;
+use rand::RngExt;
 
 fn main() {
-    let mut nums = vec![9, 3, 7, 1, 5, 2];
+
+    let nums: Vec<i32> = (0..10)
+        .map(|_| rand::rng().random_range(0..100)) // 2. Now this will work
+        .collect();
 
     println!("Original: {:?}", nums);
 

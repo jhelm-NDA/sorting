@@ -1,5 +1,4 @@
 use std::time::Instant;
-use rand::rngs::ThreadRng;
 use rand::RngExt;
 
 use crate::bubble;
@@ -12,7 +11,6 @@ use crate::heap;
 
 pub fn run_sort_benchmarks() {
     // Generate 20000 random numbers
-    let mut rng = ThreadRng::default();
 
     let nums: Vec<i32> = (0..20_000)
         .map(|_| rand::rng().random_range(0..10_000)) // 2. Now this will work
