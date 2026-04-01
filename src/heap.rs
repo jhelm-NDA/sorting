@@ -1,20 +1,19 @@
-// Activity: Implement Heap Sort
-// TODO 6:
-// 1. Build a max heap
-// 2. Repeatedly swap root with last element
-// 3. Heapify the reduced heap
 pub fn heap_sort(nums: &mut [i32]) {
     let n = nums.len();
+    if n <= 1 {
+        return;
+    }
 
-    //build max heap
-    for i in (0..n / 2).rev() {
+    // Build max heap
+    // Start from the last non-leaf node: (n / 2) - 1
+    for i in (0..=(n / 2).saturating_sub(1)).rev() {
         heapify(nums, n, i);
     }
 
-    //Extract elements
+    // One by one extract elements from heap
     for i in (1..n).rev() {
-        nums.swap(0,1);
-        heapify(nums, i, 0);
+        nums.swap(0, i);          // Move current root to end
+        heapify(nums, i, 0);      // Heapify reduced heap
     }
 }
 
