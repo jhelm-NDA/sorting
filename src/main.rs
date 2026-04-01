@@ -3,7 +3,10 @@ mod selection;
 mod insertion;
 mod merge;
 mod quick;
-mod heap; // optional
+mod heap;
+mod benchmark;
+
+use rand::Rng;
 
 fn main() {
     let mut nums = vec![9, 3, 7, 1, 5, 2];
@@ -33,4 +36,6 @@ fn main() {
     let mut f = nums.clone();
     heap::heap_sort(&mut f);
     println!("Heap:     {:?}", f);
+
+    benchmark::run_sort_benchmarks();
 }
